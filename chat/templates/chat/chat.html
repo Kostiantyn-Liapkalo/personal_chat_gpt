@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ChatGPT</title>
+</head>
+<body>
+    <h1>ChatGPT</h1>
+    <form method="post">
+        {% csrf_token %}
+        <textarea name="message" placeholder="Введіть ваше повідомлення"></textarea>
+        <button type="submit">Надіслати</button>
+    </form>
+    {% if response %}
+        <h2>Відповідь:</h2>
+        <p>{{ response }}</p>
+    {% endif %}
+</body>
+</html>
