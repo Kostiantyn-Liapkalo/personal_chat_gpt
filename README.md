@@ -1,5 +1,5 @@
 ## 1. Create a token in ChatGPT settings
-## 2.Copy the token to: mychatgpt/settings.py (OPENAI_API_KEY = 'your-openai-api-key')
+## 2. Copy the token to: mychatgpt/settings.py (OPENAI_API_KEY = 'your-openai-api-key')
 
 
 # Start comads:
