@@ -1,5 +1,4 @@
 ## 1. Create a token in ChatGPT settings
-## 2. Copy the token to: mychatgpt/settings.py (OPENAI_API_KEY = 'your-openai-api-key')
 
 1. Sign up or log in to OpenAI
 Go to the OpenAI website.
@@ -20,6 +19,7 @@ Enter a name for the key (for example, "My ChatGPT App").
 
 Copy the generated key and save it in a safe place. Note: The key will no longer be displayed after you close the window, so be sure to save it.
 
+## 2. Copy the token to: mychatgpt/settings.py (OPENAI_API_KEY = 'your-openai-api-key')
 # Start comads:
 ```
 poetry run python manage.py createsuperuser

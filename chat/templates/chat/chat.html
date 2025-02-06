@@ -1,18 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>ChatGPT</title>
-</head>
-<body>
-    <h1>ChatGPT</h1>
-    <form method="post">
-        {% csrf_token %}
-        <textarea name="message" placeholder="Введіть ваше повідомлення"></textarea>
-        <button type="submit">Надіслати</button>
-    </form>
-    {% if response %}
-        <h2>Відповідь:</h2>
-        <p>{{ response }}</p>
-    {% endif %}
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Chat{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <h2 class="text-center mb-4">Chat with ChatGPT</h2>
+        <div class="card p-4">
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <textarea name="message" class="form-control" placeholder="Enter your message" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Send</button>
+            </form>
+        </div>
+
+        {% if response %}
+            <div class="card mt-4 p-4">
+                <h4>Respond:</h4>
+                <p>{{ response }}</p>
+            </div>
+        {% endif %}
+
+        {% if chat_history %}
+            <div class="card mt-4 p-4">
+                <h4>Message history:</h4>
+                {% for message in chat_history %}
+                    <div class="mb-3">
+                        <strong>You:</strong> {{ message.message }}<br>
+                        <strong>ChatGPT:</strong> {{ message.response }}<br>
+                        <small class="text-muted">{{ message.timestamp }}</small>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
