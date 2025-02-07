@@ -30,22 +30,20 @@ def signup_view(request):
     return render(request, 'registration/signup.html', {'form': form})
 
 
-# Завантаження змінних середовища
-load_dotenv()
-
-def chat_view(request):
-    # Ініціалізація клієнта OpenAI
-    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-
-    # Генерація тексту
-    completion = client.chat.completions.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": "Write a haiku about recursion in programming."}
-        ]
-    )
-
-    # Виведення результату
-    response = completion.choices[0].message.content
-    return render(request, 'chat/chat.html', {'response': response})
+#
+# load_dotenv()
+#
+# def chat_view(request):
+#     #  OpenAI
+#     client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+#
+#     completion = client.chat.completions.create(
+#         model="gpt-3.5-turbo",
+#         messages=[
+#             {"role": "system", "content": "You are a helpful assistant."},
+#             {"role": "user", "content": "Write a haiku about recursion in programming."}
+#         ]
+#     )
+#
+#     response = completion.choices[0].message.content
+#     return render(request, 'chat/chat.html', {'response': response})

@@ -2,8 +2,6 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-from openai import OpenAI
-from dotenv import load_dotenv
 
 
 def main():
