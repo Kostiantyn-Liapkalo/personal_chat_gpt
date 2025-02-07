@@ -3,6 +3,10 @@ from django.contrib.auth.decorators import login_required
 from .models import ChatMessage
 from .services import get_chatgpt_response
 from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render
+from openai import OpenAI
+from dotenv import load_dotenv
+import os
 
 @login_required
 def chat_view(request):
@@ -24,3 +28,24 @@ def signup_view(request):
     else:
         form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})
+
+
+# Завантаження змінних середовища
+load_dotenv()
+
+def chat_view(request):
+    # Ініціалізація клієнта OpenAI
+    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+    # Генерація тексту
+    completion = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": "Write a haiku about recursion in programming."}
+        ]
+    )
+
+    # Виведення результату
+    response = completion.choices[0].message.content
+    return render(request, 'chat/chat.html', {'response': response})
