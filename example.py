@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 import os
 
 # Loading environment variables from .env
-load_dotenv("CHAT_GPT/mychatgpt/.env")
+load_dotenv(".env")
 
 # Initializing the OpenAI client using an API key from .env
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
